@@ -1,16 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import { connect } from "react-redux";
+import * as actionCreators from "../../store/actions";
 
 // Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleLeft,
-  faAngleRight,
-  faPlusCircle
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 // Components
-import ChannelNavLink from "./ChannelNavLink";
+
+import LoggedInSideNav from "./LoggedInSideNav";
 
 class SideNav extends React.Component {
   constructor(props) {
@@ -18,21 +17,20 @@ class SideNav extends React.Component {
     this.state = { collapsed: false };
   }
 
+  componentDidMount() {
+    this.props.fetchChannels();
+  }
+
   render() {
-    const channelLinks = [{ name: "all" }].map(channel => (
-      <ChannelNavLink key={channel.name} channel={channel} />
-    ));
+    console.log(this.props);
+    const emptyChannelLinks = [];
+    // const channelLinks = this.props.channels.map(channel => (
+    //   <ChannelNavLink key={channel.name} channel={channel} />
+    // ));
+
     return (
       <div>
-        <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
-          <li className="nav-item" data-toggle="tooltip" data-placement="right">
-            <Link className="nav-link heading" to="/createChannel">
-              <span className="nav-link-text mr-2">Channels</span>
-              <FontAwesomeIcon icon={faPlusCircle} />
-            </Link>
-          </li>
-          {channelLinks}
-        </ul>
+        {this.props.user ? <LoggedInSideNav /> : emptyChannelLinks}
         <ul className="navbar-nav sidenav-toggler">
           <li className="nav-item">
             <span
@@ -55,4 +53,18 @@ class SideNav extends React.Component {
   }
 }
 
-export default SideNav;
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  channels: state.channels.channels
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchChannels: () => dispatch(actionCreators.fetchChannels())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SideNav);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
@@ -38,6 +39,10 @@ class RegistationForm extends Component {
     const type = this.props.match.url.substring(1);
     const { username, password } = this.state;
     const { user, errors } = this.props;
+
+    if (user) {
+      return <Redirect to="/welcome" />;
+    }
 
     return (
       <div className="card col-6 mx-auto p-0 mt-5">
