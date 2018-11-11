@@ -26,14 +26,19 @@ class RegistationForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    this.props.signup(this.state, this.props.history);
+    const type = this.props.match.url.substring(1);
+    if (type === "signup") {
+      this.props.signup(this.state, this.props.history);
+    } else if (type === "login") {
+      this.props.login(this.state, this.props.history);
+    }
   }
 
   render() {
     const type = this.props.match.url.substring(1);
     const { username, password } = this.state;
     const { user, errors } = this.props;
-    console.log(errors);
+
     return (
       <div className="card col-6 mx-auto p-0 mt-5">
         <div className="card-body">
@@ -48,11 +53,6 @@ class RegistationForm extends Component {
             </div>
           )}
           <form onSubmit={this.submitHandler} noValidate>
-            {/* {authStore.errors.length > 0 && (
-            <div className="alert alert-danger" role="alert">
-              {authStore.errors}
-            </div>
-          )} */}
             <div className="form-group">
               <input
                 className="form-control"
@@ -90,7 +90,6 @@ class RegistationForm extends Component {
           <Link
             to={type === "login" ? "/signup" : "/login"}
             className="btn btn-small btn-link"
-            // onClick={() => (authStore.errors = [])}
           >
             {type === "login"
               ? "register an account"

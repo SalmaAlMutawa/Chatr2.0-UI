@@ -36,9 +36,10 @@ export const checkForExpiredToken = () => {
 };
 
 export const login = (userData, history) => {
+  console.log("hi");
   return dispatch => {
     axios
-      .post("https://api-chatr.herokuapp.com/login", userData)
+      .post("https://api-chatr.herokuapp.com/login/", userData)
       .then(res => res.data)
       .then(user => {
         const decodedUser = jwt_decode(user.token);
