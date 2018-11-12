@@ -15,7 +15,8 @@ class CreateChannel extends Component {
 
   submitChannel(event) {
     event.preventDefault();
-    this.props.postChannel(this.state);
+    console.log(this.props);
+    this.props.postChannel(this.state, this.props.history);
   }
 
   onTextChange(event) {
@@ -46,7 +47,8 @@ class CreateChannel extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    postChannel: newChannel => dispatch(actionCreators.postChannel(newChannel))
+    postChannel: (newChannel, history) =>
+      dispatch(actionCreators.postChannel(newChannel, history))
   };
 };
 
