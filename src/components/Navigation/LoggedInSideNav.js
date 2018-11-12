@@ -15,14 +15,20 @@ class LoggedInSideNav extends Component {
   componentDidMount() {
     this.props.fetchChannels();
   }
-
+  componentDidUpdate() {
+    this.props.fetchChannels();
+  }
   render() {
     const channelLinks = this.props.channels.map(channel => (
       <ChannelNavLink key={channel.name} channel={channel} />
     ));
 
     return (
-      <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <ul
+        className="navbar-nav navbar-sidenav"
+        id="exampleAccordion"
+        style={{ overflowY: "scroll" }}
+      >
         <li className="nav-item" data-toggle="tooltip" data-placement="right">
           <Link className="nav-link heading" to="/createChannel">
             <span className="nav-link-text mr-2">Channels</span>
