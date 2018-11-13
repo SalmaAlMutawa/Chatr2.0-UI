@@ -7,3 +7,5 @@ export { fetchChannels } from "./fetchChannels";
 export { postChannel } from "./postChannel";
 
 export { fetchChannelChat } from "./fetchChannelChat";
+
+export { postMessage } from "./postMessage";

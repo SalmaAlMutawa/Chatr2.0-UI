@@ -3,20 +3,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
 
-class CreateChannel extends Component {
+class MessageForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      message: ""
     };
-    this.submitChannel = this.submitChannel.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
     this.onTextChange = this.onTextChange.bind(this);
   }
 
-  submitChannel(event) {
+  submitMessage(event) {
     event.preventDefault();
-    console.log(this.props);
-    this.props.postChannel(this.state, this.props.history);
+    this.props.postMessage(this.state, this.props.channelID);
   }
 
   onTextChange(event) {
@@ -24,21 +23,19 @@ class CreateChannel extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
-      <form onSubmit={this.submitChannel}>
+      <form onSubmit={this.submitMessage}>
         <div className="form-group">
-          <label for="channelname">Channel Name</label>
           <input
             type="text"
             className="form-control"
-            name="name"
-            placeholder="Channel Name"
+            name="message"
+            placeholder="What's on your mind?"
             onChange={this.onTextChange}
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Create
+          Share
         </button>
       </form>
     );
@@ -47,12 +44,12 @@ class CreateChannel extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    postChannel: (newChannel, history) =>
-      dispatch(actionCreators.postChannel(newChannel, history))
+    postMessage: (newMessage, channelID) =>
+      dispatch(actionCreators.postMessage(newMessage, channelID))
   };
 };
 
 export default connect(
   null,
   mapDispatchToProps
-)(CreateChannel);
+)(MessageForm);

@@ -15,8 +15,8 @@ class LoggedInSideNav extends Component {
   componentDidMount() {
     this.props.fetchChannels();
   }
-  componentDidUpdate() {
-    this.props.fetchChannels();
+  componentDidUpdate(prevProps) {
+    if (prevProps.channels !== this.props.channels) this.props.fetchChannels();
   }
   render() {
     const channelLinks = this.props.channels.map(channel => (
