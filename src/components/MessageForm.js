@@ -16,6 +16,7 @@ class MessageForm extends Component {
   submitMessage(event) {
     event.preventDefault();
     this.props.postMessage(this.state, this.props.channelID);
+    this.setState({ message: "" });
   }
 
   onTextChange(event) {
@@ -30,6 +31,7 @@ class MessageForm extends Component {
             type="text"
             className="form-control"
             name="message"
+            value={this.state.message}
             placeholder="What's on your mind?"
             onChange={this.onTextChange}
           />
