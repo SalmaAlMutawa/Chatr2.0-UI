@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 // Components
 
@@ -16,7 +16,8 @@ class LoggedInSideNav extends Component {
     this.props.fetchChannels();
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.channels !== this.props.channels) this.props.fetchChannels();
+    if (prevProps.channels.length !== this.props.channels.length)
+      this.props.fetchChannels();
   }
   render() {
     const channelLinks = this.props.channels.map(channel => (
@@ -52,7 +53,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoggedInSideNav);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LoggedInSideNav)
+);

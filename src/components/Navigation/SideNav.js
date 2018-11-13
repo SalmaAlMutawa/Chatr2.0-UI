@@ -1,5 +1,7 @@
 import React from "react";
 
+import { withRouter } from "react-router-dom";
+
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 
@@ -60,7 +62,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SideNav);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SideNav)
+);

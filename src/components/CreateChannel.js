@@ -26,21 +26,23 @@ class CreateChannel extends Component {
   render() {
     console.log(this.state);
     return (
-      <form onSubmit={this.submitChannel}>
-        <div className="form-group">
-          <label for="channelname">Channel Name</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            placeholder="Channel Name"
-            onChange={this.onTextChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Create
-        </button>
-      </form>
+      <div className="container pd-6)">
+        <form onSubmit={this.submitChannel}>
+          <div className="form-group">
+            <label for="channelname">Channel Name</label>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              placeholder="Channel Name"
+              onChange={this.onTextChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Create
+          </button>
+        </form>
+      </div>
     );
   }
 }
