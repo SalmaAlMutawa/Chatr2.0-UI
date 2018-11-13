@@ -3,3 +3,4 @@ export const SET_ERRORS = "SET_ERRORS";
 export const FETCH_CHANNELS = "FETCH_CHANNELS";
 export const POST_CHANNEL = "POST_CHANNEL";
 export const FETCH_CHANNEL_CHAT = "FETCH_CHANNEL_CHAT";
+export const POST_MESSAGE = "POST_MESSAGE";

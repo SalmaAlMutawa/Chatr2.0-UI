@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
+import MessageForm from "./MessageForm";
+
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
-
-import Loading from "./Loading";
 
 class ChannelChat extends Component {
   // onSubmit(event) {
@@ -40,23 +40,28 @@ class ChannelChat extends Component {
   }
 
   render() {
-    // if (this.props.loading) {
-    //   return <Loading />;
-    // } else {
+    let channelName = this.props.match.params.name;
+    let theChannel = this.props.channels.find(channel => {
+      return channel.name === channelName;
+    });
     return (
       <div>
-        <h4>{"change me to display msgs of the channel"}</h4>
+        {this.props.messages.map(msg => (
+          <div key={msg.id}>
+            <h3>{msg.username}:</h3>
+            <p>{msg.message}</p>
+          </div>
+        ))}
+        {theChannel && <MessageForm channelID={theChannel.id} />}
       </div>
     );
-    // }
   }
 }
 
 const mapStateToProps = state => {
   return {
     channels: state.channels.channels,
-    messages: state.channelChat.messages,
-    loading: state.channelChat.loading
+    messages: state.channelChat.messages
   };
 };
 

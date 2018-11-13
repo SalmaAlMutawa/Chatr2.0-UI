@@ -3,7 +3,6 @@ import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
 export const postChannel = (newChannel, history) => {
-  console.log(newChannel);
   return dispatch => {
     axios
       .post("https://api-chatr.herokuapp.com/channels/create/", newChannel)
