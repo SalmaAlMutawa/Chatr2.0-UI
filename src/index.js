@@ -11,6 +11,9 @@ import App from "./App";
 // Store
 import store from "./store";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+
 store.dispatch(checkForExpiredToken());
 
 ReactDOM.render(

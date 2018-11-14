@@ -17,14 +17,17 @@ import ChannelChat from "./components/ChannelChat";
 class App extends Component {
   render() {
     return (
-      <div className="content-wrapper">
+      <div
+        className="content-wrapper"
+        style={{ backgroundColor: "rgb(240,248,255)" }}
+      >
         <NavBar />
         <Switch>
           <Route path="/welcome" component={Welcome} />
           <Route path="/(login|signup)" component={RegistrationForm} />
           <PrivateRoute path="/private" component={SuperSecretPage} />
-          <Route path="/createChannel" component={CreateChannel} />
-          <Route path="/channels/:name" component={ChannelChat} />
+          <PrivateRoute path="/createChannel" component={CreateChannel} />
+          <PrivateRoute path="/channels/:name" component={ChannelChat} />
           <Redirect to="/welcome" />
         </Switch>
         <Footer />

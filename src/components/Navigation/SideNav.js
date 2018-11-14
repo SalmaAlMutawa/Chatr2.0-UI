@@ -29,7 +29,7 @@ class SideNav extends React.Component {
     return (
       <div>
         {this.props.user ? <LoggedInSideNav /> : emptyChannelLinks}
-        <ul className="navbar-nav sidenav-toggler">
+        <ul className="navbar-nav sidenav-toggler" id="sideNav">
           <li className="nav-item">
             <span
               className="nav-link text-center"

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 
 import MessageForm from "./MessageForm";
 
+import { StickyContainer, Sticky } from "react-sticky";
+
+import Messages from "./Messages";
+
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
 
@@ -12,13 +16,6 @@ class ChannelChat extends Component {
       timer: 0
     };
   }
-  // onSubmit(event) {
-  //   event.preventDefault();
-  //   let channelName = this.props.match.params.name;
-  //   let theChannel = this.props.channels.find(channel => {
-  //     return channel.name === channelName;
-  //   });
-  // }
 
   componentDidMount() {
     let channelName = this.props.match.params.name;
@@ -65,14 +62,31 @@ class ChannelChat extends Component {
       return channel.name === channelName;
     });
     return (
-      <div className="container p-5">
-        {this.props.messages.map(msg => (
-          <div key={msg.id}>
-            <h3>{msg.username}:</h3>
-            <p>{msg.message}</p>
+      <div className="container p-4">
+        <StickyContainer>
+          <Sticky>
+            {({ style, isSticky }) => (
+              <h1
+                style={{
+                  fontFamily: "Impact, Charcoal, sans-serif"
+                }}
+              >
+                {channelName}
+              </h1>
+            )}
+          </Sticky>
+        </StickyContainer>
+
+        <div className="container">
+          <div>
+            {this.props.messages.map(msg => (
+              <div key={msg.id}>
+                <Messages msg={msg} />
+              </div>
+            ))}
+            {theChannel && <MessageForm channelID={theChannel.id} />}
           </div>
-        ))}
-        {theChannel && <MessageForm channelID={theChannel.id} />}
+        </div>
       </div>
     );
   }
