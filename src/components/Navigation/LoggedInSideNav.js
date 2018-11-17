@@ -27,7 +27,7 @@ class LoggedInSideNav extends Component {
     return (
       <ul
         className="navbar-nav navbar-sidenav"
-        id="exampleAccordion"
+        id="sideNav"
         style={{ overflowY: "scroll" }}
       >
         <li className="nav-item" data-toggle="tooltip" data-placement="right">

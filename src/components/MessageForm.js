@@ -36,7 +36,7 @@ class MessageForm extends Component {
             onChange={this.onTextChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-success">
           Share
         </button>
       </form>

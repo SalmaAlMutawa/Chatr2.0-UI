@@ -8,11 +8,17 @@ import AuthButton from "./AuthButton";
 class NavBar extends Component {
   render() {
     return (
-      <nav
-        className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-        id="mainNav"
-      >
-        <Link className="navbar-brand" to="/welcome">
+      <nav className="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <Link
+          className="navbar-brand"
+          to="/welcome"
+          style={{
+            color: "white",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+            fontSize: "16pt"
+          }}
+        >
           Chatr2.0
         </Link>
         <button

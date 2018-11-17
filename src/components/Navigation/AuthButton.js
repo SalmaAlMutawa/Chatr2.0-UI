@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
@@ -13,6 +13,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 class AuthButton extends Component {
+  constructor(props) {
+    super(props);
+    this.logoutF = this.logoutF.bind(this);
+  }
+  logoutF() {
+    this.props.logout();
+    return <Redirect to="/welcome" />;
+  }
+
   render() {
     const { user } = this.props;
     let buttons;
@@ -20,7 +29,7 @@ class AuthButton extends Component {
     if (user) {
       buttons = (
         <li className="nav-item">
-          <span className="nav-link" onClick={this.props.logout}>
+          <span className="nav-link" onClick={this.logoutF}>
             <FontAwesomeIcon icon={faSignOutAlt} /> Logout
           </span>
         </li>
