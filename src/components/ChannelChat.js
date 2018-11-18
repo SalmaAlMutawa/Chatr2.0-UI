@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import MessageForm from "./MessageForm";
 
 import { StickyContainer, Sticky } from "react-sticky";
+import StickyHeader from "react-sticky-header";
 
 import Messages from "./Messages";
 
@@ -63,28 +64,33 @@ class ChannelChat extends Component {
     });
     return (
       <div className="container p-4">
-        <StickyContainer>
-          <Sticky>
-            {({ style, isSticky }) => (
-              <h1
-                style={{
-                  fontFamily: "Impact, Charcoal, sans-serif"
-                }}
-              >
-                {channelName}
-              </h1>
-            )}
-          </Sticky>
-        </StickyContainer>
-
+        <StickyHeader>
+          <div className="Header_root">
+            <h1
+              style={{
+                position: "fixed",
+                top: "90px",
+                width: "100%",
+                lineHeight: "60px",
+                display: "inline-block",
+                fontFamily: "Impact, Charcoal, sans-serif",
+                backgroundColor: "rgb(169,169,169)"
+              }}
+            >
+              {channelName}
+            </h1>
+          </div>
+        </StickyHeader>
         <div className="container">
           <div>
             {this.props.messages.map(msg => (
               <div key={msg.id}>
-                <Messages msg={msg} />
+                <Messages msg={msg} user={this.props.user} />
               </div>
             ))}
-            {theChannel && <MessageForm channelID={theChannel.id} />}
+            <div className="container p-3">
+              {theChannel && <MessageForm channelID={theChannel.id} />}
+            </div>
           </div>
         </div>
       </div>
@@ -95,7 +101,8 @@ class ChannelChat extends Component {
 const mapStateToProps = state => {
   return {
     channels: state.channels.channels,
-    messages: state.channelChat.messages
+    messages: state.channelChat.messages,
+    user: state.auth.user
   };
 };
 

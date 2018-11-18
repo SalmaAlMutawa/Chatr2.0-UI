@@ -80,6 +80,8 @@ body.fixed-nav {
   position: relative;
   background: rgba(135, 206, 250, 0.5);
   border-radius: 0.5em;
+  top: 100px;
+  bottom: 100px;
 }
 .speech-bubble:after {
   content: "";
@@ -94,6 +96,31 @@ body.fixed-nav {
   border-left: 0;
   margin-top: -13px;
   margin-left: -13px;
+  margin-bottom: 50px;
+}
+
+.speech-bubble-sender {
+  position: relative;
+  background: rgba(144, 238, 144, 0.5);
+  border-radius: 0.5em;
+  top: 100px;
+  bottom: 100px;
+}
+
+.speech-bubble-sender:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-left-color: rgba(144, 238, 144, 0.5);
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-right: -20px;
+  margin-bottom: 50px;
 }
 
 #mainNav .navbar-collapse {

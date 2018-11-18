@@ -8,8 +8,20 @@ class Welcome extends Component {
     return (
       <div>
         <div className="container text-center my-auto z-1">
-          <h1 className="mb-1">WELCOME TO CHATR</h1>
-          //carousel start
+          <div className="container fluid p-5">
+            <h1
+              className="mb-1"
+              style={{
+                backgroundColor: "rgb(0,191,255)",
+                color: "white",
+                fontSize: "90px",
+                fontFamily: "Marker Felt, fantasy"
+              }}
+            >
+              WELCOME TO CHATR 2.0
+            </h1>
+          </div>
+          <div />
           <div
             id="carouselExampleControls"
             class="carousel slide"
@@ -25,9 +37,10 @@ class Welcome extends Component {
                   <p
                     style={{
                       fontFamily: "Impact, Charcoal, sans-serif",
-                      fontSize: "60px",
+                      fontSize: "80px",
                       fontWieght: "bold",
-                      color: "rgb(128,128,128)"
+                      color: "rgb(128,128,128)",
+                      verticalAlign: "middle"
                     }}
                   >
                     Stay Connected
@@ -35,9 +48,10 @@ class Welcome extends Component {
                   <p
                     style={{
                       fontFamily: "Georgia Pro Cond Black",
-                      fontSize: "35px",
+                      fontSize: "45px",
                       fontWieght: "bold",
-                      color: "rgb(169,169,169)"
+                      color: "white",
+                      backgroundColor: "rgba(255,192,203,1)"
                     }}
                   >
                     With your Loved ones
@@ -53,22 +67,24 @@ class Welcome extends Component {
                   <p
                     style={{
                       fontFamily: "Impact, Charcoal, sans-serif",
-                      fontSize: "60px",
+                      fontSize: "80px",
                       fontWieght: "bold",
-                      color: "rgb(128,128,128)"
+                      color: "white",
+                      verticalAlign: "middle"
                     }}
                   >
-                    Stay Connected
+                    Be updated
                   </p>
                   <p
                     style={{
                       fontFamily: "Georgia Pro Cond Black",
-                      fontSize: "35px",
+                      fontSize: "45px",
                       fontWieght: "bold",
-                      color: "rgb(169,169,169)"
+                      color: "white",
+                      backgroundColor: "rgb(169,169,169)"
                     }}
                   >
-                    With your Loved ones
+                    With the Latest news
                   </p>
                 </div>
               </div>
@@ -81,22 +97,23 @@ class Welcome extends Component {
                   <p
                     style={{
                       fontFamily: "Impact, Charcoal, sans-serif",
-                      fontSize: "60px",
+                      fontSize: "80px",
                       fontWieght: "bold",
-                      color: "rgb(128,128,128)"
+                      color: "white"
                     }}
                   >
-                    Stay Connected
+                    Stay Linked
                   </p>
                   <p
                     style={{
                       fontFamily: "Georgia Pro Cond Black",
-                      fontSize: "35px",
+                      fontSize: "45px",
                       fontWieght: "bold",
-                      color: "rgb(169,169,169)"
+                      color: "white",
+                      backgroundColor: "rgb(135,206,250)"
                     }}
                   >
-                    With your Loved ones
+                    With Chatr
                   </p>
                 </div>
               </div>
@@ -120,14 +137,11 @@ class Welcome extends Component {
               <span class="sr-only">Next</span>
             </a>
           </div>
-          //carousel end
+
           {!this.props.user && (
-            <div>
-              <h3 className="mb-5">
-                <em>You're gonna need to login to see the messages</em>
-              </h3>
-              <Link to="/login" className="btn btn-info btn-lg">
-                Login
+            <div className="container p-5">
+              <Link to="/login" className="btn btn-outline-info btn-block">
+                Get Connected
               </Link>
             </div>
           )}

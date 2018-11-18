@@ -26,7 +26,7 @@ class MessageForm extends Component {
   render() {
     return (
       <form onSubmit={this.submitMessage}>
-        <div className="form-group">
+        <div className="form-group p-5">
           <input
             type="text"
             className="form-control"
