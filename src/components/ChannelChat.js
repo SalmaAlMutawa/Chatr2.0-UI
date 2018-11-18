@@ -69,7 +69,6 @@ class ChannelChat extends Component {
             <h1
               style={{
                 position: "fixed",
-                top: "90px",
                 width: "100%",
                 lineHeight: "60px",
                 display: "inline-block",
@@ -81,17 +80,22 @@ class ChannelChat extends Component {
             </h1>
           </div>
         </StickyHeader>
-        <div className="container">
+        <div
+          className="container"
+          style={{
+            marginTop: "90px"
+          }}
+        >
           <div>
             {this.props.messages.map(msg => (
               <div key={msg.id}>
                 <Messages msg={msg} user={this.props.user} />
               </div>
             ))}
-            <div className="container p-3">
-              {theChannel && <MessageForm channelID={theChannel.id} />}
-            </div>
           </div>
+        </div>
+        <div className="container ">
+          {theChannel && <MessageForm channelID={theChannel.id} />}
         </div>
       </div>
     );

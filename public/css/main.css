@@ -80,8 +80,6 @@ body.fixed-nav {
   position: relative;
   background: rgba(135, 206, 250, 0.5);
   border-radius: 0.5em;
-  top: 100px;
-  bottom: 100px;
 }
 .speech-bubble:after {
   content: "";
@@ -103,8 +101,6 @@ body.fixed-nav {
   position: relative;
   background: rgba(144, 238, 144, 0.5);
   border-radius: 0.5em;
-  top: 100px;
-  bottom: 100px;
 }
 
 .speech-bubble-sender:after {
